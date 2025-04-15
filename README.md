@@ -1,2 +1,2 @@
 # FromScratch-
-contain ML/DL algo with scratch implementation 
+contains Machine Learning algos with scratch from implementation
