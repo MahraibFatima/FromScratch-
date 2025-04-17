@@ -1,0 +1,81 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\begin{document}
+
+\section*{Mathematical Explanation for Linear Regression Implementation}
+
+\subsection*{Introduction}
+This document provides a mathematical overview of a simple implementation of \textbf{Linear Regression}. Linear Regression aims to identify the best-fit line for a dataset by minimizing the error between predicted and actual values using the \textbf{least-squares regression} method.
+
+\subsection*{Key Equations}
+The equation of a line is represented as:
+\[ y = mx + b \]
+where:
+\begin{itemize}
+    \item \( m \): The slope of the line, representing the rate of change.
+    \item \( b \): The y-intercept, representing the value of \( y \) when \( x = 0 \).
+\end{itemize}
+
+\subsubsection*{Slope \( m \)}
+The slope \( m \) is computed as:
+\[
+m = \frac{\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^n (x_i - \bar{x})^2}
+\]
+Where:
+\begin{itemize}
+    \item \( x_i \) and \( y_i \): Individual data points from \( X_{\text{train}} \) and \( y_{\text{train}} \), respectively.
+    \item \( \bar{x} \): The mean of \( X_{\text{train}} \).
+    \item \( \bar{y} \): The mean of \( y_{\text{train}} \).
+\end{itemize}
+
+\subsubsection*{Intercept \( b \)}
+After calculating \( m \), the y-intercept \( b \) is determined using the formula:
+\[
+b = \bar{y} - m \cdot \bar{x}
+\]
+
+\subsection*{Detailed Steps in the Code}
+\subsubsection*{Numerator for \( m \)}
+The numerator for \( m \) is calculated as:
+\[
+\text{num} = \sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})
+\]
+
+\subsubsection*{Denominator for \( m \)}
+The denominator for \( m \) is computed as:
+\[
+\text{den} = \sum_{i=1}^n (x_i - \bar{x})^2
+\]
+
+\subsubsection*{Final Formula for \( m \)}
+By combining the numerator and denominator, the slope \( m \) is:
+\[
+m = \frac{\text{num}}{\text{den}}
+\]
+
+\subsubsection*{Intercept \( b \)}
+The y-intercept \( b \) is calculated as:
+\[
+b = \bar{y} - m \cdot \bar{x}
+\]
+
+\subsection*{Prediction Formula}
+To predict outcomes using the trained model, the following equation is applied:
+\[
+\hat{y} = m \cdot x + b
+\]
+Where:
+\begin{itemize}
+    \item \( \hat{y} \): The predicted value.
+    \item \( x \): The input feature value.
+\end{itemize}
+
+\subsection*{Conclusion}
+This mathematical formulation forms the basis of the Linear Regression implementation. The process involves calculating the slope and intercept to define the best-fit line, which is then used to make predictions for unseen data.
+
+\end{document}
