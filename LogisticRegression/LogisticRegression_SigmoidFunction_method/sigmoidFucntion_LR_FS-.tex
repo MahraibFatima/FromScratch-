@@ -1,0 +1,74 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\begin{document}
+
+\section*{Mathematical Explanation for Logistic Regression Implementation}
+
+\subsection*{Introduction}
+This document explains the mathematical foundation for a Logistic Regression model, which is a classification algorithm that predicts probabilities using a sigmoid function and optimizes its weights via gradient descent.
+
+\subsection*{Key Components}
+
+\subsubsection*{Sigmoid Function}
+The sigmoid function maps any real-valued number to a probability range between 0 and 1. It is defined as:
+\[
+\sigma(z) = \frac{1}{1 + e^{-z}}
+\]
+where:
+\begin{itemize}
+    \item \( z \): The linear combination of input features and weights, given by \( z = Xw + b \).
+\end{itemize}
+
+\subsection*{Optimization Process}
+The model is optimized using gradient descent by updating the weights and bias iteratively.
+
+\subsubsection*{Gradient of the Weights \( w \)}
+The gradient with respect to the weights is:
+\[
+\frac{\partial \mathcal{L}}{\partial w} = \frac{1}{n} X^T (\hat{y} - y)
+\]
+where:
+\begin{itemize}
+    \item \( X \): Matrix of input features.
+    \item \( \hat{y} \): Predicted probabilities.
+    \item \( y \): True labels.
+\end{itemize}
+
+\subsubsection*{Gradient of the Bias \( b \)}
+The gradient with respect to the bias is:
+\[
+\frac{\partial \mathcal{L}}{\partial b} = \frac{1}{n} \sum_{i=1}^n (\hat{y}_i - y_i)
+\]
+
+\subsubsection*{Weight and Bias Updates}
+The weights and bias are updated as follows:
+\[
+\begin{aligned}
+    w &\leftarrow w - \alpha \frac{\partial \mathcal{L}}{\partial w} \\
+    b &\leftarrow b - \alpha \frac{\partial \mathcal{L}}{\partial b}
+\end{aligned}
+\]
+where \( \alpha \) is the learning rate.
+
+\subsection*{Prediction}
+After training, predictions are made using the sigmoid function:
+\[
+\hat{y} = \sigma(Xw + b)
+\]
+The final predicted class labels are assigned based on a threshold (commonly 0.5):
+\[
+y_\text{pred} = \begin{cases} 
+    1 & \text{if } \hat{y} > 0.5, \\
+    0 & \text{otherwise.}
+\end{cases}
+\]
+
+\subsection*{Conclusion}
+This implementation of Logistic Regression employs the sigmoid function to produce probabilities and iteratively optimizes the model parameters using gradient descent. The resulting model can classify data effectively based on the learned decision boundary.
+
+\end{document}
